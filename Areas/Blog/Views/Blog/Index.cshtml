@@ -1,0 +1,36 @@
+﻿@model GoldLaminates.Areas.Blog.Models.BlogCategoryModel
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Blog Category List</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@if (Model.BlogList != null)
+{
+    @helper GridManageItemColumn(GoldLaminates.Areas.Blog.Models.BlogCategoryModel o)
+{
+    int? BlogCatId = o.CatId;
+    @Html.ActionLink("Edit", "Edit", "Blog", new { id = BlogCatId }, null)
+    <span>||</span>
+    @Html.ActionLink("Delete", "Delete", "Blog", new { id = BlogCatId }, new { @onclick = "return confirm('Are you sure to delete this Blog Category?');" })
+}
+
+    @Html.Grid(Model.BlogList.AsEnumerable()).Columns(columns =>
+               {
+                   columns.Add(c => c.CatName).Titled("Blog Category").Filterable(true);
+                   columns.Add().Titled("Action")
+                .Sanitized(false)
+                .Encoded(false)
+                .Sortable(false)
+                .RenderValueAs(o => GridManageItemColumn(o).ToHtmlString());
+               }).WithPaging(10).Sortable(true)
+
+}
+

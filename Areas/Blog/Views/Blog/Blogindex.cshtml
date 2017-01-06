@@ -1,0 +1,54 @@
+﻿
+
+@model GoldLaminates.Areas.Blog.Models.BlgModel
+@*@model IEnumerable<GoldLaminates.Areas.Blog.Models.BlogTb>*@
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Blog Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Blog List</h2>
+<p>
+    @Html.ActionLink("Add New", "CreateBlog")
+</p>
+<div style="margin-top:44px">
+    @if (Model != null)
+    {
+        @helper GridManageItemColumn(GoldLaminates.Areas.Blog.Models.BlgModel o)
+{
+    int? BlogId = o.BlogId;
+  
+  
+    @Html.ActionLink("Edit", "EditBlog", "Blog", new { id = BlogId }, null)
+    <span>|</span>
+   
+    @Html.ActionLink("Delete", "DeleteBlog", "Blog", new { id = BlogId }, new {@onclick="return confirm('Are you sure to delete this Blog?');" })
+}
+
+        @Html.Grid(Model.BlgList.AsEnumerable()).Columns(columns =>
+               {
+                   columns.Add(c=>c.BlogTitle).Titled("Blog Title");
+                   columns.Add(c=>c.BlogCatName).Titled("Blog Category");
+                   columns.Add(c => c.Tags).Titled("Tags");
+                   columns.Add().Titled("Action")
+                .Sanitized(false)
+                .Encoded(false)
+                .Sortable(false)
+                .RenderValueAs(o => GridManageItemColumn(o).ToHtmlString());
+               }).WithPaging(10).Sortable(true)
+
+    }
+
+</div>
+
+<script>
+   
+    function SucessFun(data)
+    {
+
+        alert(data.result);
+        return false;
+    }
+</script>

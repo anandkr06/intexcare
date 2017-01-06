@@ -1,0 +1,96 @@
+﻿<?xml version="1.0"?>
+<!--
+  For more information on how to configure your ASP.NET application, please visit
+  http://go.microsoft.com/fwlink/?LinkId=301880
+  -->
+<configuration>
+  <configSections>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false"/>
+  </configSections>
+  <connectionStrings>
+    <!--<add name="DefaultConnection" connectionString="Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\aspnet-GoldLaminates-20141104033238.mdf;Initial Catalog=aspnet-GoldLaminates-20141104033238;Integrated Security=True" providerName="System.Data.SqlClient" />-->
+    <!--<add name="GoldLaminatesEntities" connectionString="metadata=res://*/Models.GoldLaminatesModel.csdl|res://*/Models.GoldLaminatesModel.ssdl|res://*/Models.GoldLaminatesModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=184.173.237.195,7426;initial catalog=digitech_bitfang;persist security info=True;user id=digitech_bitfang;password=Foks24&amp;3;multipleactiveresultsets=True;application name=EntityFramework&quot;" providerName="System.Data.EntityClient" />-->
+
+    <add name="GoldLaminatesEntities" connectionString="metadata=res://*/Models.GoldLaminatesModel.csdl|res://*/Models.GoldLaminatesModel.ssdl|res://*/Models.GoldLaminatesModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=162.13.5.134,2433;initial catalog=intexca_db;persist security info=True;user id=intexca_dbuser;password=weTkfHdjh1;multipleactiveresultsets=True;application name=EntityFramework&quot;" providerName="System.Data.EntityClient"/>
+    <add name="BlogEntities" connectionString="metadata=res://*/Areas.Blog.Models.BlogModel.csdl|res://*/Areas.Blog.Models.BlogModel.ssdl|res://*/Areas.Blog.Models.BlogModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=162.13.5.134,2433;initial catalog=intexca_db;user id=intexca_dbuser;password=weTkfHdjh1;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient"/>
+
+    
+    <!--<add name="GoldLaminatesEntities" connectionString="metadata=res://*/Models.GoldLaminatesModel.csdl|res://*/Models.GoldLaminatesModel.ssdl|res://*/Models.GoldLaminatesModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DSS20-PC\MSSQLSERVER_2012;initial catalog=IntexHealthCare;persist security info=True;user id=sa;password=sa@123;multipleactiveresultsets=True;application name=EntityFramework&quot;" providerName="System.Data.EntityClient"/>
+    <add name="BlogEntities" connectionString="metadata=res://*/Areas.Blog.Models.BlogModel.csdl|res://*/Areas.Blog.Models.BlogModel.ssdl|res://*/Areas.Blog.Models.BlogModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=DSS20-PC\MSSQLSERVER_2012;initial catalog=IntexHealthCare;user id=sa;password=sa@123;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient"/>-->
+    
+    
+  </connectionStrings>
+  <!--<add name="GoldLaminatesEntities" connectionString="metadata=res://*/Models.GoldLaminatesModel.csdl|res://*/Models.GoldLaminatesModel.ssdl|res://*/Models.GoldLaminatesModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=demo.goldlaminates.com;initial catalog=GoldLaminates;persist security info=True;user id=demo_gold;password=lD4p0~j1;multipleactiveresultsets=True;application name=EntityFramework&quot;" providerName="System.Data.EntityClient" /></connectionStrings>-->
+  <appSettings>
+    <add key="vs:EnableBrowserLink" value="false"/>
+    <add key="webpages:Version" value="3.0.0.0"/>
+    <add key="webpages:Enabled" value="false"/>
+    <add key="ClientValidationEnabled" value="true"/>
+    <add key="UnobtrusiveJavaScriptEnabled" value="true"/>
+  </appSettings>
+  <!--
+    For a description of web.config changes see http://go.microsoft.com/fwlink/?LinkId=235367.
+
+    The following attributes can be set on the <httpRuntime> tag.
+      <system.Web>
+        <httpRuntime targetFramework="4.5.1" />
+      </system.Web>
+  -->
+  <system.web>
+    <customErrors mode="Off"/>
+
+    
+    <authentication mode="None"/>
+    <compilation debug="true" targetFramework="4.5.1"/>
+    <httpRuntime/>
+    <sessionState mode="InProc" timeout="20"/>
+    <pages controlRenderingCompatibilityVersion="4.0">
+      <namespaces>
+        <add namespace="GridMvc"/>
+      </namespaces>
+    </pages>
+  </system.web>
+  <system.net>
+    <mailSettings>
+      <smtp deliveryMethod="Network">
+        <network host="smtp.mandrillapp.com" port="587" userName="sukhchain2k@gmail.com" enableSsl="true" password="nThBbj6tNGrLX3P94o4Ncg" defaultCredentials="false"/>
+      </smtp>
+    </mailSettings>
+  </system.net>
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="false">
+      <remove name="FormsAuthenticationModule"/>
+    </modules>
+  </system.webServer>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="0.0.0.0-5.1.0.0" newVersion="5.1.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Optimization" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="1.1.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="0.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="WebGrease" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="0.0.0.0-1.5.2.14234" newVersion="1.5.2.14234"/>
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework"/>
+    <providers>
+      <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer"/>
+    </providers>
+  </entityFramework>
+</configuration>

@@ -1,0 +1,353 @@
+﻿@model GoldLaminates.Areas.Blog.Models.BlogTb
+@{
+    ViewBag.Title = "Create Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/ImageProcessing.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var SlectedPageids = '@ViewBag.SelectedPageid';
+        var Value = SlectedPageids.split(",");
+        $("#PageArray").val(Value);
+    });
+</script>
+<style>
+    .inline {
+        display: inline-block;
+    }
+</style>
+
+@Html.Partial("_EditorPartial")
+<h2>Create Blog</h2>
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-2">Blog Category :</label>
+
+        <div class="col-md-20">
+
+            @Html.DropDownListFor(m => m.CategoryId, (IEnumerable<SelectListItem>)ViewBag.FaqCat, "--Select Category--", new { @id = "CatID", @class = "form-control", onchange = "CatDropChange()" })
+            <span id="titleError" class="as err_1" style="color:red;font-size:small"> </span>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Purpose :</label>
+
+        <div class="col-md-20">
+
+            @Html.DropDownListFor(m => m.Purpose, (IEnumerable<SelectListItem>)ViewBag.purpose, new { @id = "BlogPurpose", @class = "form-control" })
+            <span id="titleError" class="as err_2" style="color:red;font-size:small"> </span>
+
+        </div>
+    </div>
+   
+    <div class="form-group">
+        <label class="control-label col-md-2">Tags :</label>
+
+        <div class="col-md-20">
+            @*@Html.DropDownListFor(r => r.Tags, (IEnumerable<SelectListItem>)ViewBag.Tags, new { @class = "form-control multiselect", id = "PageArray", multiple = "multiple", Name = "PageArray[]" })*@
+            @Html.EditorFor(model => model.Tags, new { htmlAttributes = new { @class = "form-control inline", maxlength = "50", @id = "PageArray" } }) 
+            <div style="display:inline-block">
+                <input type="button" value="Add Tags" onclick="return addToFood();" />
+                <span id="foods"></span>
+            </div>
+            <span id="titleError" class="as err_3" style="color:red;font-size:small"> </span>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Blog Title:</label>
+        @*@Html.LabelFor(model => model.ArticleTitle, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+
+            @Html.EditorFor(model => model.BlogTitle, new { htmlAttributes = new { @class = "form-control", maxlength = "500" ,@id="BlogTitle" } })
+            <span id="titleError" class="as err_4" style="color:red;font-size:small"> </span>
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Blog Description</label>
+
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.BlogDetail, new { id = "BlogDescription2", placeholder = "Write Your Answer Here", type = "area", @name = "editor2" })
+            <span id="titleError" class="as err_5" style="color:red;font-size:small"> </span>
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Video Url :</label>
+        @*@Html.LabelFor(model => model.ArticleTitle, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+
+            @Html.EditorFor(model => model.VideoUrl, new { htmlAttributes = new { @class = "form-control",placeholder="Only Youtube Video", maxlength = "250", id = "BlogVideo" } })
+           
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Upload Image :</label>
+
+        <div class="col-md-10">
+            <input type="file" name="file" id="upload" style="width: 100%;" />
+            
+
+
+        </div>
+        <img id="target_img" style="width:120px ;height:120px" />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Blog Resources:</label>
+
+        <div class="col-md-10">
+            <input type="file" name="pdf" id="upload1" style="width: 100%;" />
+         
+            <img id="target_i" style="width:120px ;height:120px" />   
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Meta Title :</label>
+        @*@Html.LabelFor(model => model.ArticleTitle, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+
+            @Html.EditorFor(model => model.MetaTitle, new { htmlAttributes = new { @class = "form-control", maxlength = "50",@id="MetaTitle" } })
+         
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Meta Keywords :</label>
+        @*@Html.LabelFor(model => model.ArticleTitle, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div class="col-md-10">
+
+            @Html.EditorFor(model => model.MetaKeyWord, new { htmlAttributes = new { @class = "form-control", maxlength = "50",@id="MetaKeyword" } })
+         
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Meta Description :</label>
+        @*@Html.LabelFor(model => model.ArticleTitle, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <div style="height: 100px; width: 277px;" class="col-md-10">
+
+            @Html.TextAreaFor(m => m.BlogDetail, new { id = "BlogMetaDescription", type = "area", @name = "editor1", ows = 8, columns = 37 })
+         
+
+        </div>
+    </div>
+
+    @*<div class="form-group">
+        <label class="control-label col-md-2">Blog Date :</label>
+        
+        <div style="height: 100px; width: 277px;" class="col-md-10">
+            <input id="BlogDate" type="date" class="form-control" />
+                  
+    </div>
+</div>*@
+        <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" id="saveBlogButton" onclick="SaveBlog()" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+
+    </div>
+
+
+
+@*<link href="~/Content/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script src="~/Content/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"></script>*@
+@*<script src="~/Scripts/bootstrap-multiselect.js"></script>
+<link href="~/Content/bootstrap-multiselect.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.multiselect').multiselect();
+    });
+</script>*@
+
+    <script>
+        $(document).ready(function () {
+
+            CKEDITOR.replace('BlogDescription2');
+          
+            //$(function () {
+              
+            //    $("#BlogDate").datetimepicker({
+            //        viewMode: 'years'
+            //    });
+              
+            //});
+        });
+    </script>
+<script>
+
+    function SaveBlog() {
+       
+        $(".as").text("");
+        var PageArray = [];
+       
+        PageArray = $("#PageArray").val();
+
+        $("#saveBlogButton").hide();
+
+        var upload = $("#upload").val();
+        var upload1 = $("#upload1").val();
+        debugger;
+        var BlogDescription = CKEDITOR.instances['BlogDescription2'].getData();
+        var BlogMetaDescription = $("#BlogMetaDescription").val();
+        var CatID = $("#CatID").val();
+        var BlogTitle = $("#BlogTitle").val();
+       
+        var BlogPurpose = $("#BlogPurpose").val();
+        var MetaTitle = $("#MetaTitle").val();
+        var BlogVideo = $("#BlogVideo").val();
+        var MetaKeyword = $("#MetaKeyword").val();
+      
+
+
+       var oldFile = OldFile;
+        var newFile = NewFile;       
+        var pdf = Pdf
+        var Resources = $("#uploadPdf").val();
+
+
+        var formData = new FormData();
+        if (oldFile != undefined || newFile != undefined) {
+            formData.append("filename", oldFile.name);
+            formData.append("filetype", oldFile.type);
+            formData.append("file", newFile);
+        }
+        if (pdf != undefined)
+        {
+            formData.append("pdf", document.getElementById("upload1").files[0]);
+            
+        }
+        formData.append("Resources", Resources);
+        formData.append("BlogDescription", BlogDescription);
+
+        formData.append("BlogMetaDescription", BlogMetaDescription);
+        formData.append("CatID", CatID);
+        formData.append("BlogTitle", BlogTitle);
+        formData.append("BlogTag", foodList);
+        formData.append("BlogPurpose", BlogPurpose);
+        formData.append("MetaTitle", MetaTitle);
+        formData.append("MetaKeyword", MetaKeyword);
+        formData.append("BlogVideo", BlogVideo);
+       // formData.append("BlogDate", $("#BlogDate").val());
+       
+        $("#loading").fadeIn();
+        ///treatmentcategoryTbs/Create
+        $.ajax({
+            url: "/Blog/Blog/SaveBlog",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                $("#loading").fadeOut();
+                if (data.result == "Null") {
+                    $(".err_" + data.data).text("Field Is Required")
+                }
+
+                else {
+                    $("#saveBlogButton").show();
+                    $(".as").text("");
+                    var loc = "@Url.Action("BlogIndex", "Blog", new {area="Blog" })";
+                    window.location.href = loc;
+                }
+            }
+        });
+
+
+    }
+
+</script>
+<script>
+    $(function () {
+        var defaultUploadBtn = $('#upload1');
+        defaultUploadBtn.on('change', function () {
+
+            //alert("ss");
+           
+            SecondImg = 0;
+            $("#target").hide();
+            var files = $(this)[0].files;
+
+            var extension = files[0].type.substr((files[0].type.lastIndexOf('/') + 1));
+           // debugger;
+            if (extension == "pdf") {
+               
+                Pdf = document.getElementById("upload1").files[0] + "&nbsp;";
+                return false;
+            }
+            else if (extension == "jpeg") {
+                SecondImg = 1;
+                processFiles(files);
+          
+            }
+        else
+            {
+                alert("Upload only JPEG or PDF Files")
+                $("#upload1").val("");
+
+                return;
+           
+        }
+        });
+    });
+</script>
+<script>
+    var foodList = [];
+
+    function addToFood() {
+        var addFood = document.getElementById('PageArray').value;
+        if (addFood == "")
+        {
+            return false;
+        }
+        foodList.push(addFood);
+
+        for (i = 0; i < foodList.length; i++) {
+            var newFood = "<a href='#' onClick='removeRecord(" + i + ");'>X</a> " + foodList[i] + "&nbsp;";
+        };
+        document.getElementById('foods').innerHTML += newFood;
+        $("#PageArray").val("");
+        $("#titleError").text("");
+    }
+
+
+    function removeRecord(i) {
+        foodList.splice(i, 1);
+        var newFood = "";
+        // re-display the records from foodList the same way we did it in addToFood()
+        for (var i = 0; i < foodList.length; i++) {
+            newFood += "<a href='#' onClick='removeRecord(" + i + ");'>X</a> " + foodList[i] ;
+        };
+        document.getElementById('foods').innerHTML = newFood;
+        $("#PageArray").val("");
+    }
+</script>
+<script>
+    $('INPUT[type="file"]').change(function () {
+        var ext = this.value.match(/\.(.+)$/)[1];
+        switch (ext) {
+            case 'jpg':
+            case 'jpeg':
+            case 'png':
+            case 'gif':
+                //$('#btnSubmitSeconOpinion').attr('disabled', false);
+                break;
+            default:
+                //$('#btnSubmitSeconOpinion').attr('disabled', true);
+                alert('This is not an allowed file type. Only .jpg, .jpeg, .png and .gif files are allowed.');
+                this.value = '';
+        }
+    });
+</script>

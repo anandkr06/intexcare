@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9fd06491a43d485db53f5929c1548275" Name="Diagram1">
+        <EntityTypeShape EntityType="GoldLaminatesModel.Article" Width="1.5" PointX="2.625" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.Banner" Width="1.5" PointX="2.5" PointY="1.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.Enquiry" Width="1.5" PointX="0.5" PointY="7" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.LoginMaster" Width="1.5" PointX="2.625" PointY="7" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.LogSession" Width="1.5" PointX="4.625" PointY="7" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.OurClientslogo" Width="1.5" PointX="4.75" PointY="1.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.OurTeam" Width="1.5" PointX="0.5" PointY="1.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.OurTeamDetail" Width="1.5" PointX="2.125" PointY="1.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.PageArticlesMapping" Width="1.5" PointX="5.25" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.Page" Width="1.5" PointX="0.5" PointY="1.25" IsExpanded="false" />
+        <AssociationConnector Association="GoldLaminatesModel.FK_PageArticlesTb_ArticlesTb" ManuallyRouted="false" />
+        <AssociationConnector Association="GoldLaminatesModel.FK_BannersTb_PagesTb" ManuallyRouted="false" />
+        <AssociationConnector Association="GoldLaminatesModel.FK_PageArticlesTb_PagesTb" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.OurClient" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.GalleryCategory" Width="1.5" PointX="4.5" PointY="1.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.GAlleryImage" Width="1.5" PointX="6.875" PointY="1.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.ProductCategory" Width="1.5" PointX="0.5" PointY="6.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.ProductDetail" Width="1.5" PointX="2.625" PointY="6.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.ProductImage" Width="1.5" PointX="6" PointY="5.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.PrivacyPolicy" Width="1.5" PointX="0.625" PointY="5.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.ContactU" Width="1.5" PointX="4.625" PointY="6.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.CityTb" Width="1.5" PointX="4.375" PointY="7.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.CountryTb" Width="1.5" PointX="0.5" PointY="7.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.NewsTb" Width="1.5" PointX="2.5" PointY="5.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.StateTb" Width="1.5" PointX="2.75" PointY="7.5" IsExpanded="false" />
+        <AssociationConnector Association="GoldLaminatesModel.FK_CityTb_StateTb" />
+        <AssociationConnector Association="GoldLaminatesModel.FK_StateTb_CountryTb" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.ModuleMapping" Width="1.5" PointX="0.5" PointY="10.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.WidgetTb" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.ModuleArticleMapping" Width="1.5" PointX="6.625" PointY="1.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.ModulePageMapping" Width="1.5" PointX="0.5" PointY="8.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.WidgetModuleMapping" Width="1.5" PointX="4.375" PointY="5.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.Module" Width="1.5" PointX="4.375" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.TreatMentMapping" Width="1.5" PointX="2.5" PointY="8.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.Blog" Width="1.5" PointX="2.25" PointY="8.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.FAQ" Width="1.5" PointX="7.125" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.FAQcategory" Width="1.5" PointX="0.5" PointY="9.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.ProcessTb" Width="1.5" PointX="6.625" PointY="3.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.DoctorHighlight" Width="1.5" PointX="2.75" PointY="9.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.HighLighMapping" Width="1.5" PointX="4.75" PointY="9.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.SpecialityTb" Width="1.5" PointX="2.5" PointY="9.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.FAQBasicInfo" Width="1.5" PointX="4.375" PointY="9.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.TratmentsTb" Width="1.5" PointX="3.375" PointY="11.375" IsExpanded="false" />
+        <AssociationConnector Association="GoldLaminatesModel.FK_TratmentsTb_TratmentsTb" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.Testimonial" Width="1.5" PointX="0.5" PointY="11.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.TreatmentDetail" Width="1.5" PointX="6.5" PointY="2.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.FaqTreatmentMapping" Width="1.5" PointX="0.5" PointY="9.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.HospitalMaster" Width="1.5" PointX="6.625" PointY="12.125" />
+        <AssociationConnector Association="GoldLaminatesModel.FK_HospitalMaster_CityTb" />
+        <EntityTypeShape EntityType="GoldLaminatesModel.TreatmentCategoryTb" Width="1.5" PointX="3.125" PointY="12.25" />
+        <AssociationConnector Association="GoldLaminatesModel.FK_TratmentsTb_TreatmentCategoryTb" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
